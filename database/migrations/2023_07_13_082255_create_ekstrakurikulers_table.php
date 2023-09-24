@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('ekstrakurikulers', function (Blueprint $table) {
             $table->id();
             $table->string('foto');
-            $table->string('ekskul');
-            $table->string('tentang');
+            $table->string('ekskul', 30);
+            $table->text('tentang');
             $table->timestamps();
         });
     }

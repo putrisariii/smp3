@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengajars', function (Blueprint $table) {
+        Schema::create('kritiks', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 50);
-            $table->string('foto');
-            $table->string('mapel', 30);
+            $table->integer('telpon')->length(13)->unsigned();
+            $table->string('whatsapp')->nullable();
+            $table->string('email');
+            $table->text('pesan');
+            $table->string('status')->default('Tidak Tampil');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengajars');
+        Schema::dropIfExists('kritiks');
     }
 };

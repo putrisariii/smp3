@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('prestasis', function (Blueprint $table) {
             $table->id();
             $table->string('foto');
-            $table->string('juara');
-            $table->string('jenis');
+            $table->string('juara', 100);
+            $table->string('jenis', 100);
             $table->timestamps();
         });
     }

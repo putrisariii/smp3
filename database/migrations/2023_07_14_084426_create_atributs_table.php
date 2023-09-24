@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_awal');
             $table->date('tanggal_akhir');
-            $table->string('kuota');
+            $table->integer('kuota')->length(3)->unsigned();
             $table->string('lokasi');
             $table->timestamps();
         });
