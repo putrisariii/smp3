@@ -3,30 +3,54 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Models\KritikSaran;
-use App\Models\Formulir;
+use App\Models\Berita;
 use App\Models\Atribut;
+use App\Models\Formulir;
+use App\Models\Pengajar;
+use App\Models\Prestasi;
+use App\Models\KritikSaran;
+use Illuminate\Http\Request;
+use App\Models\Ekstrakurikuler;
+use App\Models\Pengumuman;
+use App\Models\Beranda;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class PengunjungController extends Controller
 {
     public function Beranda () {
-        return view ('pengunjung.page.beranda');
+        $beritas = Berita::orderBy('created_at', 'desc')->get();
+        $pengajars = Pengajar::orderBy('created_at', 'desc')->get();
+        $prestasis = Prestasi::orderBy('created_at', 'desc')->get();
+        $data_kritik = KritikSaran::where('status', 'Tampil')
+        ->orderBy('created_at', 'desc')
+        ->get();
+        $berandas = Beranda::all();
+
+        return view ('pengunjung.page.beranda',compact ('beritas','pengajars','prestasis','berandas','data_kritik'));
+       
     }
     public function Berita () {
-        return view ('pengunjung.page.berita');
+        $databerita = Berita::orderBy('created_at', 'desc')->get();
+        return view ('pengunjung.page.berita',['beritas' => $databerita]);
     }
     public function Pengumuman () {
+        $datapengumuman = Pengumuman::orderBy('created_at', 'desc')->get();
+        return view ('pengunjung.page.pengumuman',['pengumumans' => $datapengumuman]);
+
         return view ('pengunjung.page.pengumuman');
     }
     public function TentangSekolah () {
-        return view ('pengunjung.page.tentang-sekolah');
+        $berandas = Beranda::all();
+        return view ('pengunjung.page.tentang-sekolah',compact ('berandas'));
     }
     public function Prestasi () {
-        return view ('pengunjung.page.prestasi');
+        $prestasis = Prestasi::orderBy('created_at', 'desc')->get();
+        return view ('pengunjung.page.prestasi',compact ('prestasis'));
     }
     public function Ekstrakurikuler () {
-        return view ('pengunjung.page.ekstrakurikuler');
+        $dataekstrakurikuler = Ekstrakurikuler::all();
+        return view ('pengunjung.page.ekstrakurikuler',['ekstrakurikulers' => $dataekstrakurikuler]);
     }
    
     // public function FormPpdb () {
@@ -46,7 +70,6 @@ class PengunjungController extends Controller
 
 
 
-
     // ------------------------------  Kritik Saran  ------------------------------\\
         // tampil
         public function KritikPengunjung () {
@@ -58,6 +81,7 @@ class PengunjungController extends Controller
         public function TambahKritik (Request $request) {
             $datakritik = KritikSaran::create($request->all());
 
+            Alert::success('Success Title', 'Success Message')->showConfirmButton();
             return redirect()->route('KritikPengunjung');
         }
 
@@ -74,10 +98,37 @@ class PengunjungController extends Controller
 
         // create
         public function TambahForm (Request $request) {
+            $rules = [
+                'nisn' => 'required|max:10',
+                'nik_ayah' => 'required|max:16',
+                'nik_ibu' => 'required|max:16',
+            ];
+        
+            $messages = [
+                'nisn.required' => 'Kolom NISN wajib diisi.',
+                'nik_ayah.required' => 'Kolom NISN wajib diisi.',
+                'nik_ibu.required' => 'Kolom NISN wajib diisi.',
+                'nisn.max' => 'NISN tidak boleh lebih dari 10 karakter.',
+                'nik_ayah.max' => 'NISN tidak boleh lebih dari 16 karakter.',
+                'nik_ibu' => 'NISN tidak boleh lebih dari 16 karakter.',
+            ];
+        
+            $this->validate($request, $rules, $messages);
+
             $dataformulir = Formulir::create($request->all());
 
-            return redirect()->route('FormPengunjung');
+            $nama = $request->input('nama');
+            session(['nama' => $nama]);
+            return redirect()->route('ShowPpdb');
         }
+
+        //show ppdb
+        public function ShowPpdb () {
+            $nama = session('nama'); // Mengambil data nama dari sesi
+            return view('pengunjung.page.show-ppdb', compact('nama'));
+           
+        }
+
 
     // ------------------------------ Formulir PPDB end  ------------------------------\\
 
@@ -86,7 +137,8 @@ class PengunjungController extends Controller
 
 
     public function DosenStaf () {
-        return view ('pengunjung.page.dosen-staf');
+        $datapengajar = Pengajar::orderBy('created_at', 'desc')->get();
+        return view ('pengunjung.page.dosen-staf',['pengajars' => $datapengajar]);
     }
     public function Home () {
         return view ('coba.home');

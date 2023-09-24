@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\pengajar;
+use App\Models\Pengajar;
 use App\Models\Berita;
 use App\Models\Pengumuman;
 use App\Models\Prestasi;
@@ -11,6 +11,7 @@ use App\Models\Ekstrakurikuler;
 use App\Models\KritikSaran;
 use App\Models\Formulir;
 use App\Models\Atribut;
+use App\Models\Beranda;
 
 class AdminController extends Controller
 {
@@ -18,10 +19,70 @@ class AdminController extends Controller
         return view ('admin.index');
     }
 
+    //------------------------------ Beranda ------------------------------/ 
+        // tampil
+        public function Beranda () {
+            $databeranda = Beranda::all();
+            return view ('/admin/beranda',['berandas' => $databeranda]);
+        }
+
+         // create
+         public function TambahBeranda (Request $request) {
+            $rand = date('sHiydm');
+            $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
+            $databeranda = Beranda::create($request->all());
+                
+                if($request -> hasFile('foto')){
+                    $request-> file('foto')->move('file/Beranda/', $foto);
+                    $databeranda->foto = $foto;
+                    $databeranda->save();
+                }
+
+            return redirect()->route('Beranda');
+        }
+
+        // update
+            public function UbahBeranda (Request $request, $id) {
+                $databeranda = Beranda::find($id);
+                // $datapengajar->update($request->all());
+
+                //update foto
+                $foto = $databeranda->foto;
+                if($request ->file('foto')){
+                    $rand = date('sHiydm');
+                    $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
+                    if($request -> hasFile('foto')){
+                        $request-> file('foto')->move('file/Beranda/', $foto);
+                    }
+                }
+                    $databeranda->foto = $foto;
+                    $databeranda->deskripsi = $request->deskripsi;
+                    $databeranda->save();
+                
+                return redirect()->route('Beranda');
+
+                
+            }
+
+        // hapus
+            public function HapusBeranda ($id) {
+                $databeranda = Beranda::find($id);
+                $databeranda->delete();
+
+                return redirect()->route('Beranda');
+            }
+
+    //------------------------------ Beranda end ------------------------------/ 
+
+
+
+
     //------------------------------ Pengajar ------------------------------/ 
         // tampil
             public function PengajarStaf () {
-                $datapengajar = Pengajar::all();
+                $datapengajar = Pengajar::latest('created_at')->get();
                 return view ('/admin/pengajar-staf',['pengajars' => $datapengajar]);
             }
 
@@ -44,17 +105,23 @@ class AdminController extends Controller
         // update
             public function TampilPengajar (Request $request, $id) {
                 $datapengajar = Pengajar::find($id);
-                $datapengajar->update($request->all());
+                // $datapengajar->update($request->all());
 
                 //update foto
-                $rand = date('sHiydm');
-                $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+                $foto = $datapengajar->foto;
+                if($request ->file('foto')){
+                    $rand = date('sHiydm');
+                    $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
                     if($request -> hasFile('foto')){
                         $request-> file('foto')->move('file/Pengajar/', $foto);
-                        $datapengajar->foto = $foto;
-                        $datapengajar->save();
                     }
-
+                } 
+                    $datapengajar->nama = $request->nama;
+                    $datapengajar->mapel = $request->mapel;
+                    $datapengajar->foto = $foto;
+                    $datapengajar->save();
+                 
                 return redirect()->route('PengajarStaf');
             }
 
@@ -73,7 +140,6 @@ class AdminController extends Controller
         // tampil
         public function Berita () {
             $databerita = Berita::all();
-
             return view ('/admin/berita',['beritas' => $databerita]);
            
         }
@@ -97,20 +163,25 @@ class AdminController extends Controller
         // update
         public function UbahBerita (Request $request, $id) {
             $databerita = Berita::find($id);
-            $databerita->update($request->all());
 
             //update foto
-            $rand = date('sHiydm');
-            $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+            $foto = $databerita->foto;
+            if($request ->file('foto')){
+                $rand = date('sHiydm');
+                $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
                 if($request -> hasFile('foto')){
                     $request-> file('foto')->move('file/Berita/', $foto);
-                    $databerita->foto = $foto;
-                    $databerita->save();
                 }
-
+            } 
+                
+                $databerita->judul = $request->judul;
+                $databerita->narasi = $request->narasi;
+                $databerita->foto = $foto;
+                $databerita->save();
+             
             return redirect()->route('Berita');
         }
-
         // hapus
         public function HapusBerita ($id) {
             $databerita = Berita::find($id);
@@ -135,12 +206,18 @@ class AdminController extends Controller
         public function TambahPengumuman (Request $request) {
             $rand = date('sHiydm');
             $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+            $file = $rand.'-'.$request->file('file')->getClientOriginalName();
 
             $datapengumuman = Pengumuman::create($request->all());
                 
                 if($request -> hasFile('foto')){
                     $request-> file('foto')->move('file/Pengumuman/', $foto);
                     $datapengumuman->foto = $foto;
+                    $datapengumuman->save();
+                }
+                if($request -> hasFile('file')){
+                    $request-> file('file')->move('file/Pengumuman/', $file);
+                    $datapengumuman->file = $file;
                     $datapengumuman->save();
                 }
 
@@ -150,17 +227,34 @@ class AdminController extends Controller
         // update
         public function UbahPengumuman (Request $request, $id) {
             $datapengumuman = Pengumuman::find($id);
-            $datapengumuman->update($request->all());
+            
 
             //update foto
-            $rand = date('sHiydm');
-            $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+            $foto = $datapengumuman->foto;
+            if($request ->file('foto')){
+                $rand = date('sHiydm');
+                $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
                 if($request -> hasFile('foto')){
                     $request-> file('foto')->move('file/Pengumuman/', $foto);
-                    $datapengumuman->foto = $foto;
-                    $datapengumuman->save();
                 }
+            } 
+            $file = $datapengumuman->file;
+            if($request ->file('file')){
+                $rand = date('sHiydm');
+                $file = $rand.'-'.$request->file('file')->getClientOriginalName();
 
+                if($request -> hasFile('file')){
+                    $request-> file('file')->move('file/Pengumuman/', $file);
+                }
+            } 
+                
+                $datapengumuman->judul = $request->judul;
+                $datapengumuman->narasi = $request->narasi;
+                $datapengumuman->file = $file;
+                $datapengumuman->foto = $foto;
+                $datapengumuman->save();
+             
             return redirect()->route('Pengumuman');
         }
 
@@ -204,17 +298,23 @@ class AdminController extends Controller
         // update
         public function UbahPrestasi (Request $request, $id) {
             $dataprestasi = Prestasi::find($id);
-            $dataprestasi->update($request->all());
 
             //update foto
-            $rand = date('sHiydm');
-            $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+            $foto = $dataprestasi->foto;
+            if($request ->file('foto')){
+                $rand = date('sHiydm');
+                $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
                 if($request -> hasFile('foto')){
                     $request-> file('foto')->move('file/Prestasi/', $foto);
-                    $dataprestasi->foto = $foto;
-                    $dataprestasi->save();
                 }
-
+            } 
+                
+                $dataprestasi->juara = $request->juara;
+                $dataprestasi->jenis = $request->jenis;
+                $dataprestasi->foto = $foto;
+                $dataprestasi->save();
+             
             return redirect()->route('Prestasi');
         }
 
@@ -257,17 +357,23 @@ class AdminController extends Controller
         // update
         public function UbahEkstrakurikuler (Request $request, $id) {
             $dataekstrakurikuler = Ekstrakurikuler::find($id);
-            $dataekstrakurikuler->update($request->all());
 
             //update foto
-            $rand = date('sHiydm');
-            $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+            $foto = $dataekstrakurikuler->foto;
+            if($request ->file('foto')){
+                $rand = date('sHiydm');
+                $foto = $rand.'-'.$request->file('foto')->getClientOriginalName();
+
                 if($request -> hasFile('foto')){
                     $request-> file('foto')->move('file/Ekstrakurikuler/', $foto);
-                    $dataekstrakurikuler->foto = $foto;
-                    $dataekstrakurikuler->save();
                 }
-
+            } 
+                
+                $dataekstrakurikuler->ekskul = $request->ekskul;
+                $dataekstrakurikuler->tentang = $request->tentang;
+                $dataekstrakurikuler->foto = $foto;
+                $dataekstrakurikuler->save();
+             
             return redirect()->route('Ekstrakurikuler');
         }
 
@@ -284,12 +390,22 @@ class AdminController extends Controller
 
     // ------------------------------ Kritik Saran ------------------------------
         // tampil
-        public function KritikAdmin () {
-            $datakritik = KritikSaran::all();
-
-            return view ('/admin/kritik-saran',['kritiks' => $datakritik]);
-            
+        public function KritikAdmin() {
+            $kritiks = KritikSaran::latest('created_at')->get();
+            return view('admin.kritik-saran', compact('kritiks'));
         }
+        
+        
+        
+
+        // Update
+        public function UpdateStatus(Request $request, $id) {
+            $datakritik = KritikSaran::find($id);
+            $datakritik->update($request->all());
+
+            return redirect()->route("KritikAdmin")->with('success','Data Berhasil di Update');
+        }
+    // End
 
         // hapus
         public function HapusKritik ($id) {
