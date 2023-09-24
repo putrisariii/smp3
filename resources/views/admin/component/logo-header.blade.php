@@ -1,8 +1,12 @@
-<div class="logo-header" data-background-color="blue">
+
+
+<div class="logo-header mr-3" data-background-color="blue">
 				
-    <a href="index.html" class="logo">
+    <div class="logo">
         <img src="../assets/img/logo-smpn3.png" style="height: 45px" alt="navbar brand" class="navbar-brand">
-    </a>
+    </div>
+
+
     <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
             <i class="icon-menu"></i>

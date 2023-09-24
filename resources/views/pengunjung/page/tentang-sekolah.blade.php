@@ -9,8 +9,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,66 +62,74 @@
 
     <!-- Identitas -->
     <div class="tentang">
-        <div class="row ">
-            <div class="col-md-12 d-flex justify-content-center">
-                <div class="card" style="margin: 1px; margin-bottom:20px; border-radius:20px;">
-                    <div class="card-body card-sk">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <h3 class="mb-2">Identitas</h3>
-                                <div class="line-dec mx-auto mb-4"></div>
-                            </div>
-                            <div class="row d-flex justify-cntent-center">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                            <td>Nama Sekolah</td>
-                                            <td>SMP Negeri 3 SUngai Kakap</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Nomor Statistik</td>
-                                            <td>201130215500</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Provinsi</td>
-                                            <td>Kalimantan Barat</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Otonomi Daerah</td>
-                                            <td>Kabupaten Kubu Raya</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Kecamatan</td>
-                                            <td>Sungai Kakap</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Desa/Kelurahan</td>
-                                            <td>Punggur Kecil</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Jalan</td>
-                                            <td>Pelita III</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Kode Pos</td>
-                                            <td>78381</td>
-                                            </tr>
-                            
-                                            <tr>
-                                            <td>Status Sekolah</td>
-                                            <td>Negeri</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-5 d-flex justify-content-center">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="wow fadeInUp" data-wow-delay="0.1s">
+                            <h1 class="mb-2">Identitas</h1>
+                            <div class="line-dec mb-4"></div>
                         </div>
+                        <div class="row d-flex justify-cntent-center">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                    <td>Nama Sekolah</td>
+                                    <td>SMP Negeri 3 Sungai Kakap</td>
+                                    </tr>
+
+                                    <tr>
+                                    <td>NPSN</td>
+                                    <td>30100914</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Nomor Statistik</td>
+                                    <td>201130215500</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Provinsi</td>
+                                    <td>Kalimantan Barat</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Otonomi Daerah</td>
+                                    <td>Kabupaten Kubu Raya</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Kecamatan</td>
+                                    <td>Sungai Kakap</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Desa/Kelurahan</td>
+                                    <td>Punggur Kecil</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Jalan</td>
+                                    <td>Pelita III</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Kode Pos</td>
+                                    <td>78381</td>
+                                    </tr>
+                    
+                                    <tr>
+                                    <td>Status Sekolah</td>
+                                    <td>Negeri</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <div class="img-rounded mt-2">
+                        <img class="img-fluid img-fix" src="{{ asset('file/Beranda//' . $berandas->skip(6)->first()->foto) }}" alt="">
                     </div>
                 </div>
             </div>
@@ -150,20 +158,20 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="row justify-content-center">
                             <div class="col-lg-7 col-md-12 p-3 wow zoomIn" data-wow-delay="0.1s">
-                                <img class="img-fluid" src="assets/img/galeri-2.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(4)->first()->foto) }}" alt="">
                             </div>
                             <div class="col-lg-5 col-md-12 p-3 align-self-end wow zoomIn" data-wow-delay="0.3s">
-                                <img class="img-fluid" src="assets/img/galeri-1.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(5)->first()->foto) }}" alt="">
                             </div>
                             <div class="col-lg-8 col-md-12 p-3 wow zoomIn" data-wow-delay="0.5s">
-                                <img class="img-fluid" src="assets/img/galeri-3.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(6)->first()->foto) }}" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 p-3 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                         <div class="text-center">
                             <h3 class="p-3" >Visi</h3>
-                            <p>Berprestasi Dalam “INTAN” (Intelensi, Takwa Dan Nasionalis)</p>
+                            <p>Terwujudnya SMP Negeri 3 Sungai Kakap “BERKELAS” (Bersih, Estetik, Religius, Kreatif, Etika, Lugas, Adaptif dan Sportif) yang trampil menggunakan IT dan berbudaya lingkungan hidup dalam era globalisasi</p>
                         </div>
                         <div class="text-center">
                             <h3 class="p-3" >Misi</h3>
@@ -172,31 +180,61 @@
                             <div class="d-flex mb-3">
                                 <i class="fa-solid fa-bullseye align-self-center p-3"></i>
                                 <div class="align-self-center">
-                                    <p>Melaksanakan Pendidikan Yang Efektif, Inovatif Untuk Mengoptimalkan Potensi Siswa, Memprogramkan, Melatih Siswa Untuk Berprestasi Sesuai Dengan Bakat Dan Minat Siswa</p>
+                                    <p>Mewujudkan  lingkungan hidup yang hijau, bersih, dan sehat</p>
                                 </div>
                             </div>
                             <div class="d-flex mb-3">
                                 <i class="fa-solid fa-bullseye align-self-center p-3"></i>
                                 <div class="align-self-center">
-                                    <p>Menerapkan Kedisiplinan/Tata Tertib Yang Demokratis Terhadap Seluruh Warga Sekolah.</p>
+                                    <p>Mewujudkan pengamalan ajaran beragama dan nilai religius dalam pembelajaran</p>
                                 </div>
                             </div>
                             <div class="d-flex mb-3">
                                 <i class="fa-solid fa-bullseye align-self-center p-3"></i>
                                 <div class="align-self-center">
-                                    <p>Menumbuhkan Penghayatan Kepada Ajaran Agama Yang Dianut Sesuai Dengan Tujuan Pendidikan Nasional.</p>
+                                    <p>Mewujudkan  karakter sesuai Profil Pelajar Pancasila melalui literasi dan numerasi</p>
                                 </div>
                             </div>
                             <div class="d-flex mb-3">
                                 <i class="fa-solid fa-bullseye align-self-center p-3"></i>
                                 <div class="align-self-center">
-                                    <p>Menerapkan Rasa Kepedulian Sosial Terhadap Warga Sekolah Maupun Masyarakat Disekitar Sekolah.</p>
+                                    <p>Mewujudkan prestasi belajar dibidang Akademik dan non Akademik.</p>
                                 </div>
                             </div>
                             <div class="d-flex mb-3">
                                 <i class="fa-solid fa-bullseye align-self-center p-3"></i>
                                 <div class="align-self-center">
-                                    <p>Membentuk Pribadi Yang Cinta Tanah Air Dan Bangsa</p>
+                                    <p>Mewujudkan ketrampilan kecakapan hidup (wirausaha) diera digital</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                <div class="align-self-center">
+                                    <p>Mewujudkan ekosistem sekolah yang menjujung tinggi etika dan norma yang sesuai dengan budaya lokal dan nasional</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                <div class="align-self-center">
+                                    <p>Mewujudkan proses belajar mengajar dan bimbingan yang berkualitas</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                <div class="align-self-center">
+                                    <p>Mewujudkan tata kelola  menuju ke arah digitalitalsasi sekolah</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                <div class="align-self-center">
+                                    <p>Mewujudkan peserta didik yang terampil dan menguasai ilmu pengetahuan melalui teknologi dan informasi</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                <div class="align-self-center">
+                                    <p>Mewujudkan hak belajar setiap anak tanpa terkecuali termasuk anak yang berkebutuhan khusus dalam proses pembelajaran yang menjunjung tinggi nilai kesetaraan</p>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +251,7 @@
         <div class="line-dec mx-auto"></div>
     </div>
     <div class="container-xxl py-5">
-        <img class="img-fluid wow fadeInUp" data-wow-delay="0.1s" src="/assets/img/struktur2.png" alt="">
+        <img class="img-fluid wow fadeInUp" data-wow-delay="0.1s" src="{{ asset('file/Beranda//' . $berandas->skip(7)->first()->foto) }}" alt="">
     </div>
    
      <!-- struktur End -->  
@@ -238,3 +276,4 @@
 </body>
 
 </html>
+

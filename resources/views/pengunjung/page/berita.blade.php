@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,83 +61,88 @@
 
    
     <!-- Berita Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-2">Berita</h1>
-                <div class="line-dec mx-auto"></div>
-            </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-1.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Pada hari ini Kamis, 8 Juni 2023 telah dilaksanakan penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class=" p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
+    <div class="berita">
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row g-5 mb-5">
+                    @foreach ($beritas as $row)
+                        <div class="col-lg-4 img-rounded wow fadeIn" data-wow-delay="0.1s">
+                            <img src="{{ asset('file/Berita/' . $row->foto) }}" alt="" class=" img-display img-fluid">
+                        </div>
+                        <div class="col-lg-8 align-self-center wow fadeIn" data-wow-delay="0.1s">
+                            <div class="text-header mb-2">
+                                <a style="font-weight: 400; " href="" data-bs-toggle="modal" data-bs-target="#detail{{$row->id}}">
+                                    <p>
+                                        <?php
+                                        $text = $row->judul;
+                                        echo ($text);
+                                        ?> 
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="text-caption">
+                                <p>
+                                    <?php
+                                    $num_char = 200;
+                                    $text = $row->narasi;
+                                    echo substr($text, 0, $num_char) . '...';
+                                    ?> 
+                                </p> 
+                            </div>
+                            <div class="text-date">
+                                <p>{{Carbon\Carbon::parse($row->created_at)->isoformat('dddd, D MMMM Y')}}</p>
+                            </div>
+                        </div>
+    
+                        <!-- Modal Detail -->
+                        <div class="modal-detail">
+                            <div class="modal fade" id="detail{{$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex justify-content-end">
+                                            
+                                            <div class="col-md-12 d-flex justify-content-end">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body ">
+                                            <div class="container ">
+                                                <div class="text-detail-header mb-1">
+                                                    <p>
+                                                        <?php
+                                                        $text = $row->judul;
+                                                        echo ($text);
+                                                        ?> 
+                                                    </p>
+                                                </div>
+                                                <div class="text-detail-date mb-3">
+                                                    <p>{{Carbon\Carbon::parse($row->created_at)->isoformat('dddd, D MMMM Y')}}</p>
+                                                </div>
+                                                <div class="position-relative overflow-hidden rounded mb-5">
+                                                    <img src="{{ asset('file/Berita/' . $row->foto) }}" alt="" class="img-fluid">
+                                                </div>
+                                                <div class="text-detail-caption mb-5">
+                                                    <p>
+                                                        <?php
+                                                        $text = $row->narasi;
+                                                        echo ($text);
+                                                        ?> 
+                                                    </p> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-    <!-- Berita End -->
 
-    <!-- Modal Berita-->
-    <div class="modal fade" id="ModalBerita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                        <div class="col-md-12 d-flex justify-content-center">
-                            <img class="mb-3" src="assets/img/berita-1.jpg" style="height: 550px; border-radius: 8px;">
-                        </div>
-                        <div class="col-12">
-                            <h5 class="mb-5">Penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023</h5>
-                        <div class="testimonial-text bg-light">
-                        <p class="mb-0">Pada hari ini Kamis, 8 Juni 2023 telah dilaksanakan penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023.</p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Modal Berita end --}}
+    <!-- Berita End -->
     </div>
         
         

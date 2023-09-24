@@ -1,7 +1,7 @@
 <footer class="footer">
-    <div class="text-center">
-        <div class="copyright">
-            2023, made with by <a>SMPN 3 Sungai Kakap</a>
+    <div class="container-fluid">
+        <div class="copyright ml-auto">
+            <p>SMPN 3 Sungai Kakap © 2023.</p>
         </div>				
     </div>
 </footer>

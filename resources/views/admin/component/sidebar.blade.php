@@ -1,68 +1,39 @@
-<div class="sidebar sidebar-style-2">			
+<div class="sidebar sidebar-style-2">
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
-            <div class="user">
-                <div class="avatar-sm float-left mr-2">
-                    <img src="../assets-admin/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-                </div>
-                <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                        <span>
-                            Putri Sari
-                            <span class="user-level">Administrator</span>
-                            <span class="caret"></span>
-                        </span>
-                    </a>
-                    <div class="clearfix"></div>
-
-                    <div class="collapse in" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="#profile">
-                                    <span class="link-collapse">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#edit">
-                                    <span class="link-collapse">Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#settings">
-                                    <span class="link-collapse">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <ul class="nav nav-primary">
-                <li class="nav-item active">
+                <li class="nav-item {{ request()->is('admin/index') ? 'active' : '' }}">
                     <a href="/admin/index">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-home text-white"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item mt-2">
+                <li class="nav-item mt-2 {{ request()->is('admin/beranda') ? 'active' : '' }}">
+                    <a href="/admin/beranda">
+                        <i class="fas fa-home text-white"></i>
+                        <p>Beranda</p>
+                    </a>
+                </li>
+                <li class="nav-item mt-2 {{ request()->is('admin/pengajar-staf') ? 'active' : '' }}">
                     <a href="/admin/pengajar-staf">
-                        <i class="fas fa-desktop"></i>
+                        <i class="fas fa-users text-white"></i>
                         <p>Pengajar & Staf</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/berita','admin/pengumuman') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#tables">
-                        <i class="fas fa-table"></i>
+                        <i class="fas fa-table text-white"></i>
                         <p>Berita Pengumuman</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{ request()->is('admin/berita') ? 'active' : '' }}">
                                 <a href="/admin/berita">
                                     <span class="sub-item">Berita</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
                                 <a href="/admin/pengumuman">
                                     <span class="sub-item">Pengumuman</span>
                                 </a>
@@ -70,32 +41,32 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/prestasi') ? 'active' : '' }}">
                     <a href="/admin/prestasi">
-                        <i class="fas fa-desktop"></i>
+                        <i class="fa fa-award text-white"></i>
                         <p>Prestasi</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/ekstrakurikuler') ? 'active' : '' }}">
                     <a href="/admin/ekstrakurikuler">
-                        <i class="fas fa-desktop"></i>
+                        <i class="fa fa-gamepad text-white"></i>
                         <p>Ekstrakurikuler</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/ppdb','admin/form-ppdb') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#table">
-                        <i class="fas fa-table"></i>
+                        <i class="fa fa-school text-white"></i>
                         <p>PPDB</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="table">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{ request()->is('admin/ppdb') ? 'active' : '' }}">
                                 <a href="/admin/ppdb">
                                     <span class="sub-item">Atribut</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ request()->is('admin/form-ppdb') ? 'active' : '' }}">
                                 <a href="/admin/form-ppdb">
                                     <span class="sub-item">Formulir PPDB</span>
                                 </a>
@@ -103,9 +74,9 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/kritik-saran') ? 'active' : '' }}">
                     <a href="/admin/kritik-saran">
-                        <i class="fas fa-desktop"></i>
+                        <i class="fa fa-comment text-white"></i>
                         <p>Kritik & Saran</p>
                     </a>
                 </li>

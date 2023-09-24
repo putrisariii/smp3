@@ -9,8 +9,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,66 +66,49 @@
                 <div class="line-dec mx-auto mb-4"></div>
             </div>
             <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="team-item bg-light h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid" src="assets/img/piala.jpg" alt="" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                            </div>
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="pb-3">PMR</h3>
+                @foreach ( $ekstrakurikulers as $row )
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <a data-bs-toggle="modal" data-bs-target="#detail{{ $row->id }}">
+                    <div class="team-item bg-light h-100">
+                        <div class="img-item">
+                            <img src="{{ asset('file/Ekstrakurikuler/' . $row->foto) }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <div class="text-heading">
+                                <p class="mb-0">{{ $row->ekskul }}</p>
                             </div>
                         </div>
+                    </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="team-item bg-light h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid" src="assets/img/piala.jpg" alt="" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <!-- Modal -->
+                <div class="modal fade" id="detail{{ $row->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="pb-3">Olahraga Pilihan</h3>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row ">
+                                        <div class="img-item img-rounded">
+                                            <img src="{{ asset('file/Ekstrakurikuler/' . $row->foto) }}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="text-center p-4 pb-0">
+                                            <div class="text-heading">
+                                                <p class="mb-0">{{ $row->ekskul }}</p>
+                                            </div>
+                                            <div class="text-caption">
+                                                <p class="pb-4">{{ $row->tentang }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="course-item bg-light h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid" src="assets/img/piala.jpg" alt="" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                            </div>
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="pb-3">Drumband</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="team-item bg-light h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid" src="assets/img/piala.jpg" alt="" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                            </div>
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="pb-3">Pramuka</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="team-item bg-light h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid" src="assets/img/piala.jpg" alt="" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                            </div>
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="pb-3">Paskibra</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

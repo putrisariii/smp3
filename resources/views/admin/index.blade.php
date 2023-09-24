@@ -1,30 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
-	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="../assets-admin/img/icon.ico" type="image/x-icon"/>
-
-	<!-- Fonts and icons -->
-	<script src="../assets-admin/js/plugin/webfont/webfont.min.js"></script>
-	<script>
-		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets-admin/css/fonts.min.css']},
-			active: function() {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
-
-	<!-- CSS Files -->
-	<link rel="stylesheet" href="../assets-admin/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets-admin/css/atlantis.min.css">
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="../assets-admin/css/demo.css">
-	<link rel="stylesheet" href="../assets-admin/css/style.css">
+	@include('admin/component/head')
 
 </head>
 <body>
@@ -42,24 +20,22 @@
 		<!-- Sidebar -->
 			@include('admin/component/sidebar')
 		<!-- End Sidebar -->
-
 		<div class="main-panel">
-				<div class="content">
-					<div class="panel-header">
-						<div class="page-inner py-5">
-							<div class="text-center">
-								<h1 class="text-white pb-2 fw-bold">Selamat Datang</h1>
-								<h3 class="text-white op-7">ADMIN</h3>
-							</div>
+			<div class="content">
+				<div class="panel-header">
+					<div class="page-inner py-5">
+						<div class="text-center">
+							<h1 class="text-white pb-2 fw-bold">Selamat Datang</h1>
+							<h3 class="text-white op-7">ADMIN OFFICIAL WEB SMPN 3 SUNGAI KAKAP</h3>
 						</div>
 					</div>
 				</div>
-			<!-- Footer -->
-				@include('admin/component/footer')
-			<!-- Footer End -->	
+			</div>
+		<!-- Footer -->
+			@include('admin/component/footer')
+		<!-- Footer End -->	
 		</div>
-		
-	</div>
+	
 	<!--   Core JS Files   -->
 	<script src="../assets-admin/js/core/jquery.3.2.1.min.js"></script>
 	<script src="../assets-admin/js/core/popper.min.js"></script>

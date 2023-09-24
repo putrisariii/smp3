@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Tables - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
+	<title>Kritik dan Saran</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../../assets-admin/img/icon.ico" type="image/x-icon"/>
 	
@@ -50,106 +50,150 @@
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Kritik dan Saran</h4>
-										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal" style="background: #04a3b1!important;border-color:#04a3b1!important;">
-											<i class="fa fa-plus"></i>
-											Tambah
-										</button>
 									</div>
 								</div>
 								<div class="card-body">
-									<!-- Modal -->
-									<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header no-bd">
-													<h5 class="modal-title">
-														<span class="fw-mediumbold">
-														Tambah</span> 
-														<span class="fw-light">
-															Data
-														</span>
-													</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													<p class="small">Buat baris baru menggunakan formulir ini, pastikan Anda mengisi semuanya</p>
-													<form>
-														<div class="row">
-															<div class="col-sm-12">
-																<div class="form-group form-group-default">
-																	<label>Nama lengkap</label>
-																	<input id="addName" type="text" class="form-control" placeholder="fill name">
-																</div>
-															</div>
-															<div class="col-md-6 pr-0">
-																<div class="form-group form-group-default">
-																	<label>No telepon</label>
-																	<input id="addPosition" type="text" class="form-control" placeholder="fill position">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>No Whatsapp</label>
-																	<input id="addOffice" type="text" class="form-control" placeholder="fill office">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>Email</label>
-																	<input id="addOffice" type="text" class="form-control" placeholder="fill office">
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group form-group-default">
-																	<label>Isi Pesan</label>
-																	<input id="addOffice" type="text" class="form-control" placeholder="fill office">
-																</div>
-															</div>
-														</div>
-													</form>
-												</div>
-												<div class="modal-footer no-bd">
-													<button type="button" id="addRowButton" class="btn btn-primary" style="background: #04a3b1!important">Add</button>
-													<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-												</div>
-											</div>
-										</div>
-									</div>
 									<div class="table-responsive">
 										<table id="add-row" class="display table table-striped table-hover" >
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th>No</th>
 													<th>Nama lengkap</th>
 													<th>No telepon</th>
 													<th>No Whatsapp</th>
 													<th>Email</th>
+													<th>Status</th>
 													<th>Isi Pesan</th>
-													<th style="width: 10%">Action</th>
+													<th style="width: 1%">Action</th>
 												</tr>
 											</thead>
 											<tbody>
+												<?php $i=1;?>
 												@foreach ( $kritiks as $row )
 												@csrf
 												<tr>
-													<td>{{ $row->id }}</td>
+													<td>{{ $i++ }}</td>
 													<td>{{ $row->nama }}</td>
 													<td>{{ $row->telpon }}</td>
 													<td>{{ $row->whatsapp }}</td>
 													<td>{{ $row->email }}</td>
+													<td class="text-center">
+														@if ($row->status == 'Tampil')
+															<span class="badge badge-success">Tampil</span>
+														@else
+															<span class="badge badge-danger">Tidak Tampil</span>
+														@endif
+													</td>
 													<td>{{ $row->pesan }}</td>
 													<td>
 														<div class="form-button-action">
-															<a href="/admin/kritik-saran/delete/{{ $row->id }}">
-																<button type="button" class="btn btn-link btn-danger btn-lg">
+															<button type="button" data-toggle="modal" data-target="#edit{{$row->id}}" title="" class="btn btn-link btn-primary btn-lg" >
+																<i class="fa fa-edit"></i>
+															</button>
+															<a href="#">
+																<button type="button" data-toggle="tooltip" class="btn btn-link btn-danger btn-lg delete" data-id="{{ $row->id }}" data-nama="{{ $row->nama }}">
 																	<i class="fa fa-times"></i>
 																</button>
 															</a>
 														</div>
 													</td>
 												</tr>
+												<div class="modal-detail">
+													<div class="modal fade" id="edit{{$row->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog " role="document">
+															<div class="modal-content">
+																<div class="modal-body">
+																	<div class="container">
+																		<div class="mb-3">
+																			<div class="title-detail">
+																				<p>Kode Pengirim</p>
+																			</div>
+																			<div class="text-detail">
+																				<p>
+																					<?php
+																					$number = $row->id;
+																					$formattedNumber = sprintf("%03d", $number);
+																					echo $formattedNumber;
+																					?>
+																				</p>
+																			</div>
+																		</div>
+																		<div class="mb-3">
+																			<div class="title-detail">
+																				<p>Nama Lengkap</p>
+																			</div>
+																			<div class="text-detail">
+																				<p>{{$row->nama}}</p>
+																			</div>
+																		</div> 
+																		<div class="mb-3">
+																			<div class="title-detail">
+																				<p>No. Telpon</p>
+																			</div>
+																			<div class="text-detail">
+																				<p>{{$row->telpon}}</p>
+																			</div>
+																		</div> 
+																		<div class="mb-3">
+																			<div class="title-detail">
+																				<p>No. Whatsapp</p>
+																			</div>
+																			<div class="text-detail">
+																				<p>{{$row->whatsapp}}</p>
+																			</div>
+																		</div>                                
+																		<div class="mb-3">
+																			<div class="title-detail">
+																				<p>Email</p>
+																			</div>
+																			<div class="text-detail">
+																				<p>{{$row->email}}</p>
+																			</div>
+																		</div>                                
+																		<div class="mb-3">
+																			<div class="title-detail">
+																				<p>Isi Pesan</p>
+																			</div>
+																			<div class="text-detail">
+																				<p>{{$row->pesan}}</p>
+																			</div>
+																		</div>
+
+																		<form action="{{ route('StatusKritik', $row->id )}}" method="POST" enctype="multipart/form-data">
+																		@csrf
+																			<label>Status</label>
+																			<div class="col-md-12">
+																				<div class="form-check">
+																					<div class="row">
+																						<div class="col-md-6 col-6">
+																							<div class="form-check">
+																								<input class="form-check-input" type="radio" name="status" value="Tidak Tampil" id="opsi1"
+																								@if ($row->status == 'Tidak Tampil') checked  @endif>
+																								<label class="form-check-label ml-2" for="fopsi1">Tidak Tampil</label>
+																							</div>
+																						</div>
+																						<div class="col-md-6 col-6">
+																							<div class="form-check">
+																								<input class="form-check-input" type="radio" name="status" value="Tampil" id="opsi2"
+																								@if ($row->status == 'Tampil') {{ 'checked '}}  @endif>
+																								<label class="form-check-label ml-2" for="opsi2">Tampil</label>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="modal-footer no-bd">
+																				<button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+																				<button type="submit" id="addRowButton" class="btn btn-primary">Simpan</button>
+																			</div>
+																		</form>                              
+																	</div>
+																</div>
+																
+															</div>
+														</div>
+													</div>
+												</div>
 												@endforeach
 											</tbody>
 										</table>
@@ -188,5 +232,32 @@
 			});
 		});
 	</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{{-- sweet alert hapus --}}
+<script>
+	 $('.delete').click(function(){
+	var kritikid = $(this).attr('data-id');
+	var nama = $(this).attr('data-nama');
+	
+	swal({
+		title: "Yakin?",
+		text: "Kamu akan menghapus kritik dan saran dari  "+nama+" ",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((willDelete) => {
+		if (willDelete) {
+			window.location = "/admin/kritik-saran/delete/"+kritikid+" "
+			swal("Data berhasil di hapus", {
+			icon: "success",
+			});
+	} else {
+		swal("Data tidak jadi dihapus");
+	}
+	});
+});
+</script>
 </body>
 </html>

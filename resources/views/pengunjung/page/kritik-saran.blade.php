@@ -9,8 +9,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,10 @@
 
     <!-- Template Stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet">
+
+   
+    
+
 </head>
 
 <body>
@@ -63,15 +67,15 @@
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
               <h4 class="mb-5">Kirimkan kritik dan saranmu untuk SMPN 3 Sungai Kakap yang lebih baik</h4>
           </div>
-          <form action="/kritik-saran" method="POST" enctype="multipart/form-data">
+          <form action="/kritik-saran" method="POST" enctype="multipart/form-data" id="myForm">
             @csrf
             <div class="row">
               <div class="form-floating col-md-6 mb-4">
-                <input type="text" name="nama" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="text" name="nama" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                 <label for="floatingInput" class="mr-3">Nama lengkap</label>
               </div>
               <div class="form-floating col-md-6 mb-4">
-                <input type="text" name="telpon" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="text" name="telpon" class="form-control" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">No Telepon</label>
               </div>
               <div class="form-floating col-md-6 mb-4">
@@ -79,15 +83,15 @@
                 <label for="floatingPassword">No Whatsapp</label>
               </div>
               <div class="form-floating col-md-6 mb-4">
-                <input type="email" name="email" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="email" name="email" class="form-control" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Email</label>
               </div>
               <div class="form-floating col-md-12 mb-4">
-                <textarea class="form-control" name="pesan" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <textarea class="form-control" name="pesan" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" required></textarea>
                 <label for="floatingTextarea2">Isi pesan</label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-rounded">Kirim</button>
+            <button type="submit"  class="btn btn-primary btn-rounded" >Kirim</button>
           </form>
         </div>
       </div>
@@ -95,7 +99,6 @@
     <!-- Kritik-saran end -->
 
  
-        
 
     @include('pengunjung.component.footer')
 
@@ -116,4 +119,28 @@
     <script src="assets/js/main.js"></script>
 </body>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.js"></script>
+<script>
+   document.getElementById('myForm').addEventListener('submit', function(event) {
+      // event.preventDefault();
+  
+      
+      // Simulasikan pengiriman data ke server
+      // Di sini Anda dapat menambahkan logika untuk mengirim data ke backend
+      
+      // Setelah data terkirim berhasil
+     
+      
+      // Atau, jika ada respon dari server yang mengindikasikan data berhasil terkirim
+      // if (response.success) {
+      //   Swal.fire({
+      //     title: 'Data Terkirim!',
+      //     text: 'Data berhasil terkirim.',
+      //     icon: 'success',
+      //     confirmButtonText: 'Ok'
+      //   });
+      // }
+    });
+</script>
 </html>

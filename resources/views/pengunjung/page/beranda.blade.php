@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,10 +42,14 @@
         </div>
     </div>
     <!-- Spinner End -->
+    
+
 
 <div class="wrapper">
+    <div class="beranda">
     
     @include('pengunjung.component.navbar')
+  
 
     <!-- ======= Heading Beranda ======= -->
         <section id="hero" class="d-flex justify-cntent-center align-items-center">
@@ -56,19 +60,42 @@
                         <div class="animated slideInDown">
                             <h2>Selamat Datang Di Website Resmi</h2>
                             <h2 style="margin-bottom:50px">SMP Negeri 3 Sungai Kakap</h2>
-                            <p>Bersama Kita Belajar</p>
-                            <p>Bersama Kita Maju</p>
+                            <p>SPENTA Suka Hebat</p>
+                            <p class="mb-3">SPENTA Suka Berkelas</p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 cursor-pointer">
                         <div class="owl-carousel header-carousel position-relative">
                             <div class="owl-carousel-item position-relative">
-                                <img class="img-fluid" src="assets/img/smpn3-1.jpg" alt="">
+                                <img class="img-fluid img-fix" src="{{ asset('file/Beranda/' . $berandas->first()->foto) }}" alt="">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <?php
+                                    $text = $berandas->first()->deskripsi;
+                                    echo ($text);
+                                ?> 
+                                </div>
                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
                                 </div>
                             </div>
                             <div class="owl-carousel-item position-relative">
-                                <img class="img-fluid" src="assets/img/smpn3-2.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(1)->first()->foto) }}" alt="">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <?php
+                                    $text = $berandas->skip(1)->first()->deskripsi;
+                                    echo ($text);
+                                ?> 
+                                </div>
+                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
+                                </div>
+                            </div>
+                            <div class="owl-carousel-item position-relative">
+                                <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(2)->first()->foto) }}" alt="">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <?php
+                                    $text = $berandas->skip(2)->first()->deskripsi;
+                                    echo ($text);
+                                ?> 
+                                </div>
                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
                                 </div>
                             </div>
@@ -79,10 +106,12 @@
             </div>
         </section>
     <!-- End Heading Beranda -->
-    
-    <!-- intro -->
+
+        @include('pengunjung.component.sosmed')
+        <!-- intro -->
         <div class="container-xxl py-5">
             <div class="container">
+                
                 <div class="row g-4">
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="service-item text-center h-100 pt-3">
@@ -119,374 +148,332 @@
                 </div>
             </div>
         </div>
-    <!-- intro End -->
+        <!-- intro End -->
 
-    <!-- Kata Sambutan Start -->
-    <div class="kata-sambutan">
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                        <div class="position-relative h-100">
-                            <img class="img-fluid" src="/assets/img/oauyyo7ebzjogltooboy.jpg" alt=""">
+        <!-- Kata Sambutan Start -->
+        <div class="kata-sambutan">
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="row g-5">
+                        <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                            <div class="position-relative h-100">
+                                <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(3)->first()->foto) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-9 text-center wow fadeInUp" data-wow-delay="0.3s">
+                            <h1 class="mb-2">Sambutan Kepala Sekolah</h1>
+                            <div class="line-dec mx-auto mb-4"></div>
+                            <p class="mb-4">Assalamualaikum Warahmatullahi Wabarakatuh<br> Salam sejahtera untuk kita semua</p>
+                            <h5 class="mb-4">Selamat Datang Di Website Resmi SMP Negeri 3 Sungai Kakap</h5>
+                            <p>                            
+                                <?php
+                                $text = $berandas->skip(3)->first()->deskripsi;
+                                echo ($text);
+                                ?> 
+                            </p>
                         </div>
                     </div>
-                    <div class="col-lg-9 text-center wow fadeInUp" data-wow-delay="0.3s">
-                        <h1 class="mb-2">Sambutan Kepala Sekolah</h1>
+                </div>
+            </div>
+        </div>
+        <!-- Kata Sambutan End -->
+
+        <!-- Visi Misi Start -->
+        <div class="visi-misi">
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="">Visi dan Misi</h1>
+                        <div class="line-dec mx-auto"></div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 col-md-12 p-3 wow zoomIn" data-wow-delay="0.1s">
+                                    <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(4)->first()->foto) }}" alt="">
+                                </div>
+                                <div class="col-lg-5 col-md-12 p-3 align-self-end wow zoomIn" data-wow-delay="0.3s">
+                                    <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(5)->first()->foto) }}" alt="">
+                                </div>
+                                <div class="col-lg-8 col-md-12 p-3 wow zoomIn" data-wow-delay="0.5s">
+                                    <img class="img-fluid" src="{{ asset('file/Beranda//' . $berandas->skip(6)->first()->foto) }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 p-3 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
+                            <div class="text-center">
+                                <h3 class="p-3" >Visi</h3>
+                                <p>Terwujudnya SMP Negeri 3 Sungai Kakap “BERKELAS” (Bersih, Estetik, Religius, Kreatif, Etika, Lugas, Adaptif dan Sportif) yang trampil menggunakan IT dan berbudaya lingkungan hidup dalam era globalisasi</p>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="p-3" >Misi</h3>
+                            </div>
+                            <div class="container-misi">
+                                <div class="d-flex mb-3">
+                                    <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                    <div class="align-self-center">
+                                        <p>Melaksanakan Pendidikan Yang Efektif, Inovatif Untuk Mengoptimalkan Potensi Siswa, Memprogramkan, Melatih Siswa Untuk Berprestasi Sesuai Dengan Bakat Dan Minat Siswa</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                    <div class="align-self-center">
+                                        <p>Menerapkan Kedisiplinan/Tata Tertib Yang Demokratis Terhadap Seluruh Warga Sekolah.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                    <div class="align-self-center">
+                                        <p>Menumbuhkan Penghayatan Kepada Ajaran Agama Yang Dianut Sesuai Dengan Tujuan Pendidikan Nasional.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                    <div class="align-self-center">
+                                        <p>Menerapkan Rasa Kepedulian Sosial Terhadap Warga Sekolah Maupun Masyarakat Disekitar Sekolah.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <i class="fa-solid fa-bullseye align-self-center p-3"></i>
+                                    <div class="align-self-center">
+                                        <p>Membentuk Pribadi Yang Cinta Tanah Air Dan Bangsa</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!-- Visi Misi End -->
+
+       
+
+        
+
+        <!-- Guru Start -->
+        <div class="guru">
+            <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-2">Tenaga Pengajar SMPN 3 Sungai Kakap</h1>
                         <div class="line-dec mx-auto mb-4"></div>
-                        <p class="mb-4">Assalamualaikum Warahmatullahi Wabarakatuh<br> Salam sejahtera untuk kita semua</p>
-                        <h5 class="mb-4">Selamat Datang Di Website Resmi SMP Negeri 3 Sungai Kakap</h5>
-                        <p>Website sekolah adalah situs web yang dibuat dan dikelola oleh sebuah sekolah untuk memberikan informasi tentang sekolah...</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Kata Sambutan End -->
-
-
-    <!-- Visi Misi Start -->
-    <div class="visi-misi">
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="">Visi dan Misi</h1>
-                    <div class="line-dec mx-auto"></div>
-                </div>
-                <div class="row g-3">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 col-md-12 p-3 wow zoomIn" data-wow-delay="0.1s">
-                                <img class="img-fluid" src="assets/img/galeri-2.jpg" alt="">
-                            </div>
-                            <div class="col-lg-5 col-md-12 p-3 align-self-end wow zoomIn" data-wow-delay="0.3s">
-                                <img class="img-fluid" src="assets/img/galeri-1.jpg" alt="">
-                            </div>
-                            <div class="col-lg-8 col-md-12 p-3 wow zoomIn" data-wow-delay="0.5s">
-                                <img class="img-fluid" src="assets/img/galeri-3.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 p-3 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                        <div class="text-center">
-                            <h3 class="p-3" >Visi</h3>
-                            <p>Berprestasi Dalam “INTAN” (Intelensi, Takwa Dan Nasionalis)</p>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="p-3" >Misi</h3>
-                        </div>
-                        <div class="container-misi">
-                            <div class="d-flex mb-3">
-                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
-                                <div class="align-self-center">
-                                    <p>Melaksanakan Pendidikan Yang Efektif, Inovatif Untuk Mengoptimalkan Potensi Siswa, Memprogramkan, Melatih Siswa Untuk Berprestasi Sesuai Dengan Bakat Dan Minat Siswa</p>
+                    <div class="row justify-content-center">
+                        <div class="owl-carousel testimonial-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
+                            @foreach ( $pengajars as $row )
+                            <div class="team-item bg-light h-100" data-toggle="modal" data-target="#detailGuru{{ $row->id }}">
+                                <div class="img-item">
+                                    <img src="{{ asset('file/Pengajar/' . $row->foto) }}" class="img-fluid" alt="">
                                 </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
-                                <div class="align-self-center">
-                                    <p>Menerapkan Kedisiplinan/Tata Tertib Yang Demokratis Terhadap Seluruh Warga Sekolah.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
-                                <div class="align-self-center">
-                                    <p>Menumbuhkan Penghayatan Kepada Ajaran Agama Yang Dianut Sesuai Dengan Tujuan Pendidikan Nasional.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
-                                <div class="align-self-center">
-                                    <p>Menerapkan Rasa Kepedulian Sosial Terhadap Warga Sekolah Maupun Masyarakat Disekitar Sekolah.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fa-solid fa-bullseye align-self-center p-3"></i>
-                                <div class="align-self-center">
-                                    <p>Membentuk Pribadi Yang Cinta Tanah Air Dan Bangsa</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Visi Misi End -->
-
-
-    <!-- Prestasi Start -->
-    <div class="prestasi">
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-1">Prestasi</h1>
-                    <div class="line-dec mx-auto mb-4"></div>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="owl-carousel testimonial-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
-                        <a data-bs-toggle="modal" data-bs-target="#ModalPrestasi">
-                            <div class="team-item bg-light h-100">
-                                <img class="img-fluid" src="assets/img/piala.jpg"  alt="" />
                                 <div class="text-center p-4 pb-0">
-                                    <h3 class="mb-0">Juara 1</h3>
-                                    <h5 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h5>
+                                    <div class="text-heading">
+                                        <p class="mb-0">{{ $row->nama }}</p>
+                                    </div>
+                                    <div class="text-caption">
+                                        <p class="pb-4">Guru {{ $row->mapel }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
-                        <a data-bs-toggle="modal" data-bs-target="#ModalPrestasi">
-                            <div class="team-item bg-light h-100">
-                                <img class="img-fluid" src="assets/img/piala.jpg"  alt="" />
+                            @endforeach
+                        </div>
+                        @foreach ( $pengajars as $row )
+                        <!-- Modal -->
+                        <div class="modal-detail">
+                            <div class="modal fade" id="detailGuru{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header justify-content-end">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-5 col-12">
+                                                    <div class="img-item img-rounded">
+                                                        <img src="{{ asset('file/Pengajar/' . $row->foto) }}" class="img-fluid" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class=" pb-0">
+                                                        <div class="text-heading">
+                                                            <p>Nama Lengkap</p>
+                                                        </div>
+                                                        <div class="text-caption">
+                                                            <p class="mb-0">{{ $row->nama }}</p>
+                                                        </div>
+                                                        <div class="text-heading">
+                                                            <p>Mengajar Pelajaran</p>
+                                                        </div>
+                                                        <div class="text-caption">
+                                                            <p class="mb-0">{{ $row->mapel }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Guru End -->
+        <div class="text-center">
+            <a href="dosen-staf" class="btn btn-outline-primary p-3" role="button" aria-pressed="true">Selengkapnya</a>
+        </div>
+
+        <!-- Berita Start -->
+        <div class="berita">
+            <div class="container-xxl py-5">
+                <div class="text-center mx-auto" style="max-width: 500px">
+                    <div class="display-6 animated slideInDown">
+                        <p>Berita Terkini</p>
+                    </div>
+                <div class="line-dec mb-4 mx-auto"></div>
+                </div>
+                <div class="container">
+                    <div class="row g-3">
+                        @foreach ($beritas->take(3) as $row)
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 p-2 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item h-100">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="col-12 img-item img-rounded p-3">
+                                        <img class="img-fluid" src="{{ asset('file/Berita/' . $row->foto) }}" alt=""/>
+                                    </div>
+                                    <div class="col-12 p-3">
+                                        <div class="text-heading">
+                                            <a href="/berita">
+                                                <p><?php $num_char = 50; $text = $row->judul; echo substr($text, 0, $num_char) . '...';?></p>
+                                            </a>
+                                        </div>
+                                        <div class="text-caption">
+                                            <p><?php $num_char = 50; $text = $row->narasi; echo substr($text, 0, $num_char) . '...';?></p>
+                                        </div>
+                                        <label>{{Carbon\Carbon::parse($row->tanggal)->isoformat('dddd, D MMMM Y')}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="berita" class="btn btn-outline-primary p-3" role="button" aria-pressed="true">Selengkapnya</a>
+        </div>
+        <!-- Berita End -->
+
+         <!-- Prestasi Start -->
+         <div class="prestasi">
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-1">Prestasi</h1>
+                        <div class="line-dec mx-auto mb-4"></div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="owl-carousel testimonial-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
+                            @foreach ( $prestasis as $row )
+                            <div class="team-item bg-light h-100" data-toggle="modal" data-target="#detailPrestasi{{ $row->id }}">
+                                <div class="img-item">
+                                    <img src="{{ asset('file/Prestasi/' . $row->foto) }}" class="img-fluid" alt="">
+                                </div>
                                 <div class="text-center p-4 pb-0">
-                                    <h3 class="mb-0">Juara 1</h3>
-                                    <h5 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h5>
+                                    <div class="text-heading">
+                                        <p class="mb-0">Juara {{ $row->juara }}</p>
+                                    </div>
+                                    <div class="text-caption">
+                                        <p class="pb-4">{{ $row->jenis }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                            @endforeach
+                        </div>
+                        @foreach ( $prestasis as $row )
+                        <!-- Modal -->
+                        <div class="modal-detail">
+                            <div class="modal fade" id="detailPrestasi{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header justify-content-end">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="img-item img-rounded">
+                                                <img src="{{ asset('file/Prestasi/' . $row->foto) }}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="text-center p-4 pb-0">
+                                                <div class="text-heading">
+                                                    <p class="mb-0">Juara {{ $row->juara }}</p>
+                                                </div>
+                                                <div class="text-caption">
+                                                    <p class="pb-4">{{ $row->jenis }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
-                    {{-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s"> --}}
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="text-center">
-    <a href="prestasi" class="btn btn-outline-primary" role="button" aria-pressed="true">Selengkapnya</a>
-    </div>
-    <!-- Prestasi End -->
-
-    <!-- Modal Prestasi-->
-    <div class="modal fade" id="ModalPrestasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                        <div class="col-4">
-                            <img class="img-fluid" src="assets/img/piala.jpg" alt="">
-                        </div>
-                        <div class="col-8">
-                            <h4 class="mb-0">Juara 1</h4>
-                            <h6 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h6>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+        <div class="text-center">
+            <a href="prestasi" class="btn btn-outline-primary p-3" role="button" aria-pressed="true">Selengkapnya</a>
         </div>
-    </div>
-    {{-- Modal Prestasi end --}}
+        <!-- Prestasi End -->
 
-    <!-- Guru Start -->
-    <div class="guru">
+        <!-- Testimonial Start -->
         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-2">Tenaga Pengajar SMPN 3 Sungai Kakap</h1>
+                    <h1 class="mb-1">Kritik dan Saran</h1>
                     <div class="line-dec mx-auto mb-4"></div>
                 </div>
-                <div class="owl-carousel testimonial-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item text-center">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                <small>BAhasa Indonesia</small>
+                <div class="owl-carousel testimonial-carousel position-relative">
+                    @foreach($data_kritik->slice(0, 3) as $row)
+                        <div class="testimonial-item text-center">
+                            <img class="border rounded-circle p-2 mx-auto mb-3" src="assets/img/user.png" style="width: 80px; height: 80px;">
+                            <h5 class="mb-4">{{$row->nama}}</h5>
+                            <div class="testimonial-text bg-light text-center p-4">
+                                <p class="mb-0">{{$row->pesan}}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="testimonial-item text-center">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                <small>BAhasa Indonesia</small>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
-    
+        
+    <!-- Testimonial End -->
 
-    <div class="guru">
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-2">Tenaga Pengajar SMPN 3 Sungai Kakap</h1>
-                    <div class="line-dec mx-auto mb-4"></div>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a data-bs-toggle="modal" data-bs-target="#ModalPengajar">
-                            <div class="team-item bg-light h-100">
-                                <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                    <small>BAhasa Indonesia</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                                 <div class="team-item bg-light h-100">
-                                <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                    <small>Bahasa Indonesia</small>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                <small>Bahasa Indonesia</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                <small>Bahasa Indonesia</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- Guru End -->
-
-    <!-- Modal Guru-->
-    <div class="modal fade" id="ModalPengajar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                        <div class="col-4">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg" alt="">
-                        </div>
-                        <div class="col-8">
-                            <h5 class="mb-0">Susanti, S.Hut, M.Pd</h5>
-                            <small>Guru IPA</small>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-center">
-        <a href="dosen-staf" class="btn btn-outline-primary" role="button" aria-pressed="true">Selengkapnya</a>
-    </div>
-    {{-- Modal Guru end --}}
-
-
-    <!-- Berita Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-2">Berita</h1>
-                <div class="line-dec mx-auto"></div>
-            </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-1.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Pada hari ini Kamis, 8 Juni 2023 telah dilaksanakan penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class=" p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <a data-bs-toggle="modal" data-bs-target="#ModalBerita">
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-center">
-    <a href="berita" class="btn btn-outline-primary" role="button" aria-pressed="true">Selengkapnya</a>
-    </div>
-    <!-- Berita End -->
-
-    <!-- Modal Berita-->
-    <div class="modal fade" id="ModalBerita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <img class="img-fluid mb-3" src="assets/img/berita-1.jpg" style="border-radius: 8px;">
-                            </div>
-                            <div class="col-12">
-                                <h5 class="mb-5">Penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023</h5>
-                                <div class="testimonial-text bg-light">
-                                    <p class="mb-0">Pada hari ini Kamis, 8 Juni 2023 telah dilaksanakan penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Modal Berita end --}}
-
 </div>
 
 @include('pengunjung.component.footer')
+
+
     
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/lib/wow/wow.min.js"></script>
     <script src="assets/lib/easing/easing.min.js"></script>
@@ -495,6 +482,22 @@
 
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Aktifkan carousel
+            $("#carouselExample").carousel();
+    
+            // Hentikan auto-rotate saat hover
+            $("#carouselExample").hover(function(){
+                $(this).carousel('pause');
+            }, function(){
+                $(this).carousel('cycle');
+            });
+        });
+    </script>
+    
+
 </body>
 
 </html>

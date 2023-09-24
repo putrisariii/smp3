@@ -9,8 +9,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,75 +59,68 @@
    
    <!-- Prestasi Start -->
    <div class="prestasi">
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-1">Prestasi</h1>
-                <div class="line-dec mx-auto mb-4"></div>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a data-bs-toggle="modal" data-bs-target="#ModalPrestasi">
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="mb-1">Prestasi</h1>
+                    <div class="line-dec mx-auto mb-4"></div>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    @foreach ( $prestasis as $row )
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <a data-bs-toggle="modal" data-bs-target="#detail{{ $row->id }}">
                         <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="assets/img/piala.jpg"  alt="" />
+                            <div class="img-item">
+                                <img src="{{ asset('file/Prestasi/' . $row->foto) }}" class="img-fluid" alt="">
+                            </div>
                             <div class="text-center p-4 pb-0">
-                                <h3 class="mb-0">Juara 1</h3>
-                                <h5 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h5>
+                                <div class="text-heading">
+                                    <p class="mb-0">Juara {{ $row->juara }}</p>
+                                </div>
+                                <div class="text-caption">
+                                    <p class="pb-4">{{ $row->jenis }}</p>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a data-bs-toggle="modal" data-bs-target="#ModalPrestasi">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="assets/img/piala.jpg"  alt="" />
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="mb-0">Juara 1</h3>
-                                <h5 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h5>
+                        </a>
+                    </div>
+                    <!-- Modal -->
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="detail{{ $row->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row ">
+                                            <div class=" col-md-12 col-12 mb-3 ">
+                                                <img src="{{ asset('file/Prestasi/' . $row->foto) }}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class=" col-md-12 col-12 text-center">
+                                                <div class="text-heading">
+                                                    <p class="mb-0">Juara {{ $row->juara }}</p>
+                                                </div>
+                                                <div class="text-caption">
+                                                    <p class="pb-4">{{ $row->jenis }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a data-bs-toggle="modal" data-bs-target="#ModalPrestasi">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="assets/img/piala.jpg"  alt="" />
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="mb-0">Juara 1</h3>
-                                <h5 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    <!-- Prestasi End -->
-    
-    <!-- Modal -->
-    <div class="modal fade" id="ModalPrestasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                        <div class="col-4">
-                            <img class="img-fluid" src="assets/img/piala.jpg" alt="">
-                        </div>
-                        <div class="col-8">
-                            <h4 class="mb-0">Juara 1</h4>
-                            <h6 class="pb-4">Bulutangkis Putra Tingkat Kecamatan Sungai Kakap</h6>
-                        </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-        </div>
+            </div>
         </div>
     </div>
+    <!-- Prestasi End -->
+    
+
 
     @include('pengunjung.component.footer')
 

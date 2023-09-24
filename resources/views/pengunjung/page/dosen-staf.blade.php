@@ -9,8 +9,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,78 +65,79 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-2">Tenaga Pengajar SMPN 3 Sungai Kakap</h1>
+                    <h1 class="mb-2">Tenaga Pengajar dan Staf SMPN 3 Sungai Kakap</h1>
                     <div class="line-dec mx-auto mb-4"></div>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a data-bs-toggle="modal" data-bs-target="#ModalPengajar">
-                            <div class="team-item bg-light h-100">
-                                <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                    <small>Bahasa Indonesia</small>
+                    @foreach ( $pengajars as $row )
+                    <div class="col-lg-3 col-md-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <a data-bs-toggle="modal" data-bs-target="#detailGuru{{ $row->id }}">
+                        <div class="team-item bg-light h-100">
+                            <div class="img-item">
+                                <img src="{{ asset('file/Pengajar/' . $row->foto) }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="text-center p-4 pb-0">
+                                <div class="text-heading">
+                                    <p class="mb-0">{{ $row->nama }}</p>
+                                </div>
+                                <div class="text-caption">
+                                    <p class="pb-4">Guru {{ $row->mapel}}</p>
                                 </div>
                             </div>
+                        </div>
                         </a>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                                 <div class="team-item bg-light h-100">
-                                <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                                <div class="text-center p-4">
-                                    <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                    <small>Bahasa Indonesia</small>
+                    <!-- Modal Guru-->
+
+                    <div class="modal fade" id="detailGuru{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+                        <div class="modal-detail">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-end">
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-5 col-12">
+                                                <div class="img-item img-rounded">
+                                                    <img src="{{ asset('file/Pengajar/' . $row->foto) }}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class=" pb-0">
+                                                    <div class="text-heading">
+                                                        <p>Nama Lengkap</p>
+                                                    </div>
+                                                    <div class="text-caption">
+                                                        <p class="mb-0">{{ $row->nama }}</p>
+                                                    </div>
+                                                    <div class="text-heading">
+                                                        <p>Mengajar Pelajaran</p>
+                                                    </div>
+                                                    <div class="text-caption">
+                                                        <p class="mb-0">{{ $row->mapel }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                <small>Bahasa Indonesia</small>
-                            </div>
                         </div>
+                       
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item bg-light h-100">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg"  alt="" />
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Rusmia Nainggolan</h5>
-                                <small>Bahasa Indonesia</small>
-                            </div>
-                        </div>
-                    </div>
+
+                    {{-- Modal Guru end --}}
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
     <!-- Guru End -->
 
-    <!-- Modal Guru-->
-    <div class="modal fade" id="ModalPengajar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                        <div class="col-4">
-                            <img class="img-fluid" src="/assets/img/team-1.jpg" alt="">
-                        </div>
-                        <div class="col-8">
-                            <h5 class="mb-0">Susanti, S.Hut, M.Pd</h5>
-                            <small>Guru IPA</small>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Modal Guru end --}}
+    
         
 
     @include('pengunjung.component.footer')

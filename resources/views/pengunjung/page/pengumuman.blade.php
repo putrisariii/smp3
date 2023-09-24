@@ -9,8 +9,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link href="/assets/img/logo-smpn3sungaikakap.png" rel="icon">
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,78 +61,115 @@
 
    
     <!-- Pengumuman Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    {{-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h1 class="mb-2">Pengumuman</h1>
                 <div class="line-dec mx-auto"></div>
             </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-1.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023</h5>
+            <div class="row g-4 justify-content-center">
+                @foreach ($pengumumans as $row)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" >
+                 
+                    <a href="{{ asset('file/Pengumuman/' . $row->file) }}" ><img src="{{ asset('file/Pengumuman/' . $row->foto) }}" class="img-fluid item-img"alt=""></a>
+                    <h5 class="mb-3">
+                        
+                           
+                      
+                    </h5>
                     <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Pada hari ini Kamis, 8 Juni 2023 telah dilaksanakan penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023.</p>
+                    <p class="mb-0">
+                       
+                    </p>
                     <a data-bs-toggle="modal" data-bs-target="#ModalPengumuman">
                     <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
                     </div>
                     </a>
                 </div>
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class=" p-2 mx-auto mb-3" src="assets/img/berita-2.jpg" style="width: 400px; height: 300px; border-radius: 20px">
-                    <h5 class="mb-3">Literasi Digital Oleh Mahasiswa IKIP PGRI Pontianak</h5>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <div type="button" style="text-align-last: right; font-style:italic">Selengkapnya  <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
-    <!-- Pengumuman End -->
+    </div> --}}
 
-    <!-- Modal Pengumuman-->
-    <div class="modal fade" id="ModalPengumuman" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row align-items-start">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <img class="img-fluid mb-3" src="assets/img/berita-1.jpg" style="border-radius: 8px;">
+ <!-- Prestasi Start -->
+<div class="pengumuman">
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                @foreach ($pengumumans as $row)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                
+                    <div class="team-item bg-light h-100">
+                        <div class="img-item">
+                            <a href="{{ asset('file/Pengumuman/' . $row->file) }}" ><img src="{{ asset('file/Pengumuman/' . $row->foto) }}" class="img-fluid item-img"alt=""></a>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <div class="text-heading">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#detail{{ $row->id }}">
+                                    <p class="mb-0">
+                                        <?php
+                                        $num_char = 50;
+                                        $text = $row->judul;
+                                        echo substr($text, 0, $num_char) . '...';
+                                        ?>
+                                    </p>
+                                </a>
+            
                             </div>
-                            <div class="col-12">
-                                <h5 class="mb-5">Penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023</h5>
-                                <div class="testimonial-text bg-light">
-                                    <p class="mb-0">Pada hari ini Kamis, 8 Juni 2023 telah dilaksanakan penyerahan Surat Keterangan Lulus siswa/i kelas IX SMP Negeri 3 Sungai Kakap Tahun Ajaran 2022/2023.</p>
+                            <div class="text-caption">
+                                <p class="pb-4"><?php
+                                    $num_char = 100;
+                                    $text = $row->narasi;
+                                    echo substr($text, 0, $num_char) . '...';
+                                    ?> 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="detail{{ $row->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class=" col-md-12 col-12 mb-3">
+                                            <img src="{{ asset('file/Pengumuman/' . $row->foto) }}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class=" col-md-12 col-12 align-self-center">
+                                            <div class="text-heading mb-3">
+                                                <p class="mb-0"> {{ $row->judul }}</p>
+                                            </div>
+                                            <div class="text-caption">
+                                                <p class="pb-4">
+                                                    <?php
+                                                    $text = $row->narasi;
+                                                    echo ($text);
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
-    {{-- Modal Pengumuman end --}}
+ </div>
+
+
+    <!-- Pengumuman End -->
+
+   
         
         
 

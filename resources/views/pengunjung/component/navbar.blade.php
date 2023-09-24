@@ -10,7 +10,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="beranda" class="nav-item nav-link {{ Request::is('beranda') ? 'active' : '' }}">Beranda</a>
+                    <a href="/" class="nav-item nav-link {{ Request::is('beranda') ? 'active' : '' }}">Beranda</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle {{ Request::is('tentang-sekolah', 'dosen-staf') ? 'active' : '' }}" data-bs-toggle="dropdown">Profil</a>
                         <div class="dropdown-menu fade-down m-0">

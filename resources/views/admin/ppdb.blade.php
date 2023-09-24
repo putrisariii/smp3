@@ -1,29 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Tables - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
-	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="../../assets-admin/img/icon.ico" type="image/x-icon"/>
-	
-	<!-- Fonts and icons -->
-	<script src="../../assets-admin/js/plugin/webfont/webfont.min.js"></script>
-	<script>
-		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets-admin/css/fonts.min.css']},
-			active: function() {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
-
-	<!-- CSS Files -->
-	<link rel="stylesheet" href="../../assets-admin/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../assets-admin/css/atlantis.min.css">
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="../../assets-admin/css/demo.css">
-	<link rel="stylesheet" href="../../assets-admin/css/style.css">
+	<title>Atribut PPDB</title>
+	@include('admin/component/head')
 
 </head>
 <body>
@@ -50,15 +29,11 @@
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Atribut PPDB</h4>
-										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal" style="background: #04a3b1!important;border-color:#04a3b1!important;">
-											<i class="fa fa-plus"></i>
-											Tambah
-										</button>
 									</div>
 								</div>
 								<div class="card-body">
 									<!-- Modal Tambah Atribut PPDB-->
-									<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+									{{-- <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header no-bd">
@@ -102,14 +77,14 @@
 															</div>
 														</div>
 														<div class="modal-footer no-bd">
-															<button type="submit" id="addRowButton" class="btn btn-primary" style="background: #04a3b1!important">Add</button>
-															<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+															<button type="button" class="btn btn-danger" data-dismiss="modal" >Batal</button>
+															<button type="submit" id="addRowButton"  class="btn btn-primary">Tambah</button>
 														</div>
 													</form>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> --}}
 									<!-- Modal Tambah Atribut PPDB end-->
 
 									<div class="table-responsive">
@@ -138,11 +113,6 @@
 															<button type="button" data-toggle="modal" data-target="#edit{{$row->id}}" title="" class="btn btn-link btn-primary btn-lg" >
 																<i class="fa fa-edit"></i>
 															</button>
-															<a href="/admin/ppdb/delete/{{ $row->id }}">
-																<button type="button" class="btn btn-link btn-danger btn-lg">
-																	<i class="fa fa-times"></i>
-																</button>
-															</a>
 														</div>
 													</td>
 												</tr>
@@ -154,7 +124,7 @@
 															<div class="modal-header no-bd">
 																<h5 class="modal-title">
 																	<span class="fw-mediumbold">
-																	Tambah</span> 
+																	Edit</span> 
 																	<span class="fw-light">
 																		Data
 																	</span>
@@ -164,7 +134,7 @@
 																</button>
 															</div>
 															<div class="modal-body">
-																<p class="small">Buat baris baru menggunakan formulir ini, pastikan Anda mengisi semuanya</p>
+																<p class="small">Pastikan Anda mengisi semuanya dengan benar</p>
 																<form action="/admin/ppdb/{{ $row->id }}" method="POST" enctype="multipart/form-data">
 																	@csrf
 																	<div class="row">
@@ -192,8 +162,8 @@
 																		</div>
 																	</div>
 																	<div class="modal-footer no-bd">
-																		<button type="submit" id="addRowButton" class="btn btn-primary" style="background: #04a3b1!important">Add</button>
-																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+																		<button type="button" class="btn btn-danger" data-dismiss="modal" >Batal</button>
+																		<button type="submit" id="addRowButton"  class="btn btn-primary">Simpan</button>
 																	</div>
 																</form>
 															</div>
@@ -213,7 +183,6 @@
 			</div>
 			@include('admin/component/footer')
 		</div>
-
 	</div>
 	<!--   Core JS Files   -->
 	<script src="../../assets-admin/js/core/jquery.3.2.1.min.js"></script>

@@ -1,8 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengunjungController;
 
 
 /*
@@ -16,7 +18,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/beranda',[PengunjungController::class,'Beranda']);
+Route::get('/',[PengunjungController::class,'Beranda']);
 Route::get('/berita',[PengunjungController::class,'Berita']);
 Route::get('/pengumuman',[PengunjungController::class,'Pengumuman']);
 Route::get('/tentang-sekolah',[PengunjungController::class,'TentangSekolah']);
@@ -28,7 +30,7 @@ Route::get('/dosen-staf',[PengunjungController::class,'DosenStaf']);
 Route::get('/home',[PengunjungController::class,'Home']);
 
 
-Route::get('admin/index',[AdminController::class,'Index']);
+Route::get('admin/index',[AdminController::class,'Index'])->name('Dashboard')->middleware('auth');
 
 
 
@@ -39,7 +41,7 @@ Route::get('admin/ppdb',[AdminController::class,'Ppdb']);
 
 
 //------------------------------ Pengajar ------------------------------/ 
-Route::get('/admin/pengajar-staf',[AdminController::class,'PengajarStaf'])->name('PengajarStaf');
+Route::get('/admin/pengajar-staf',[AdminController::class,'PengajarStaf'])->name('PengajarStaf')->middleware('auth');
 
     // create
         Route::post('/admin/pengajar-staf',[AdminController::class,'TambahPengajar']); 
@@ -54,8 +56,25 @@ Route::get('/admin/pengajar-staf',[AdminController::class,'PengajarStaf'])->name
 
 
 
+//------------------------------ Beranda ------------------------------/ 
+//tampil
+Route::get('/admin/beranda',[AdminController::class,'Beranda'])->name('Beranda');
+
+    // create
+    Route::post('/admin/beranda',[AdminController::class,'TambahBeranda']); 
+
+    // update
+    Route::post('/admin/beranda/{id}',[AdminController::class,'UbahBeranda']); 
+
+    // hapus
+    Route::get('/admin/beranda/delete/{id}',[AdminController::class,'HapusBeranda']);
+
+
+//------------------------------ Beranda end ------------------------------/ 
+
+
 //------------------------------ Berita ------------------------------/ 
-Route::get('/admin/berita',[AdminController::class,'Berita'])->name('Berita');
+Route::get('/admin/berita',[AdminController::class,'Berita'])->name('Berita')->middleware('auth');
 
     // create
     Route::post('/admin/berita',[AdminController::class,'TambahBerita']); 
@@ -70,7 +89,7 @@ Route::get('/admin/berita',[AdminController::class,'Berita'])->name('Berita');
 
 
 //------------------------------ Pengumuman ------------------------------/ 
-Route::get('/admin/pengumuman',[AdminController::class,'Pengumuman'])->name('Pengumuman');
+Route::get('/admin/pengumuman',[AdminController::class,'Pengumuman'])->name('Pengumuman')->middleware('auth');
 
     // create
     Route::post('/admin/pengumuman',[AdminController::class,'TambahPengumuman']); 
@@ -85,7 +104,7 @@ Route::get('/admin/pengumuman',[AdminController::class,'Pengumuman'])->name('Pen
 
 
 //------------------------------ Prestasi------------------------------/ 
-Route::get('/admin/prestasi',[AdminController::class,'Prestasi'])->name('Prestasi');
+Route::get('/admin/prestasi',[AdminController::class,'Prestasi'])->name('Prestasi')->middleware('auth');
 
     // create
     Route::post('/admin/prestasi',[AdminController::class,'TambahPrestasi']); 
@@ -100,7 +119,7 @@ Route::get('/admin/prestasi',[AdminController::class,'Prestasi'])->name('Prestas
 
 
 //------------------------------ Ekstrakurikuler ------------------------------/
-Route::get('/admin/ekstrakurikuler',[AdminController::class,'Ekstrakurikuler'])->name('Ekstrakurikuler');
+Route::get('/admin/ekstrakurikuler',[AdminController::class,'Ekstrakurikuler'])->name('Ekstrakurikuler')->middleware('auth');
 
     // create
     Route::post('/admin/ekstrakurikuler',[AdminController::class,'TambahEkstrakurikuler']); 
@@ -120,6 +139,7 @@ Route::get('/admin/ekstrakurikuler',[AdminController::class,'Ekstrakurikuler'])-
 
     // tampil admin
     Route::get('/admin/kritik-saran',[AdminController::class,'KritikAdmin'])->name('KritikAdmin');
+    Route::post('/admin/kritik-saran/{id}',[AdminController::class,'UpdateStatus'])->name('StatusKritik');
 
     // create
     Route::post('/kritik-saran',[PengunjungController::class,'TambahKritik']);
@@ -147,6 +167,9 @@ Route::get('/admin/ekstrakurikuler',[AdminController::class,'Ekstrakurikuler'])-
     // hapus
     Route::get('/admin/form-ppdb/delete/{id}',[AdminController::class,'HapusForm']);
 
+    //tampil show
+    Route::get('/show-ppdb',[PengunjungController::class,'ShowPpdb'])->name('ShowPpdb');
+
    //------------------------------ Formulir PPDB end ------------------------------/
 
 
@@ -154,10 +177,10 @@ Route::get('/admin/ekstrakurikuler',[AdminController::class,'Ekstrakurikuler'])-
 
    //------------------------------ PPDB ------------------------------/
     // tampil admin
-    Route::get('/admin/ppdb',[AdminController::class,'PpdbAdmin'])->name('PpdbAdmin');
+    Route::get('/admin/ppdb',[AdminController::class,'PpdbAdmin'])->name('PpdbAdmin')->middleware('auth');
 
     // tampil pengunjung
-    Route::get('/ppdb',[PengunjungController::class,'Ppdb']);
+    Route::get('/ppdb',[PengunjungController::class,'Ppdb'])->name('Ppdb');
 
     // create
     Route::post('/admin/ppdb',[AdminController::class,'TambahPpdb']);
@@ -174,6 +197,15 @@ Route::get('/admin/ekstrakurikuler',[AdminController::class,'Ekstrakurikuler'])-
 
 
 
+
+
+
+
+
+Route::get('/admin-login',[LoginController::class,'Login'])->name('login'); 
+Route::post('/admin-login',[LoginController::class,'LoginProses']);
+
+Route::get('/logout',[LoginController::class,'Logout']);
 
 
 
